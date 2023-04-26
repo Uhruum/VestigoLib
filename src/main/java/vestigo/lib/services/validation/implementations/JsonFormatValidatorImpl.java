@@ -15,9 +15,13 @@ public class JsonFormatValidatorImpl implements FormatValidator {
     public boolean isValid(String value) {
         TypeAdapter<JsonElement> strictAdapter = new Gson().getAdapter(JsonElement.class);
         try {
-            strictAdapter.fromJson(value);
-            return true;
-        }catch (JsonSyntaxException | IOException e) {
+            JsonElement jsonElement = strictAdapter.fromJson(value);
+
+            if (jsonElement.isJsonPrimitive())
+                return false;
+
+            return !jsonElement.isJsonNull();
+        } catch (JsonSyntaxException | IOException e) {
             return false;
         }
     }
