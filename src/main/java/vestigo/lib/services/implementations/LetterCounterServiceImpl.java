@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import vestigo.lib.services.apstractions.LetterCounter;
 import vestigo.lib.services.apstractions.LetterCounterService;
-import vestigo.lib.services.dtos.LetterCounterServiceReadDto;
+import vestigo.lib.services.dtos.LetterCounterReadDto;
 
 
 @Service
@@ -19,10 +19,13 @@ public class LetterCounterServiceImpl implements LetterCounterService {
         _consonantLetterCounter = consonantLetterCounter;
     }
 
-    public LetterCounterServiceReadDto count(String text) {
-        return LetterCounterServiceReadDto.builder()
-                .VowelCount( _vowelsLetterCounter.countLetters(text))
-                .ConsonantCount(_consonantLetterCounter.countLetters(text))
+    public LetterCounterReadDto count(String text) {
+
+
+
+        return LetterCounterReadDto.builder()
+                .vowelCount( _vowelsLetterCounter.countLetters(text))
+                .consonantCount(_consonantLetterCounter.countLetters(text))
                 .build();
     }
 }

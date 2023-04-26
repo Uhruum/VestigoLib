@@ -5,3 +5,4 @@ Test log message!
 2023-04-26 01:44:51-main--DEBUG-vestigo.lib.VestigoLibApplication:Test log message!
 2023-04-26 02:14:38-main--DEBUG-vestigo.lib.VestigoLibApplication:Test log message!
 2023-04-26 04:22:07-main--DEBUG-vestigo.lib.VestigoLibApplication:Test log message!
+2023.04.26 20:00:20.547 [DEBUG] vestigo.lib.VestigoLibApplication: Test log message!

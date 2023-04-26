@@ -1,10 +1,10 @@
 package vestigo.lib.services.apstractions;
 
-import vestigo.lib.services.dtos.LetterCounterServiceReadDto;
+import vestigo.lib.services.dtos.LetterCounterReadDto;
 
 /**
  *
  */
 public interface LetterCounterService {
-    LetterCounterServiceReadDto count(String text);
+    LetterCounterReadDto count(String text);
 }

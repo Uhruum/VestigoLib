@@ -1,5 +1,6 @@
 package vestigo.lib.services.validation.implementations;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;
 import vestigo.lib.services.validation.abstractions.FormatValidator;
@@ -11,13 +12,14 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 @Component
+@Qualifier("XmlFormatValidatorImpl")
 public class XmlFormatValidatorImpl implements FormatValidator {
 
     public boolean isValid(String value) {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            dBuilder.parse(new ByteArrayInputStream(value.getBytes()));
+            dBuilder.parse(new ByteArrayInputStream(value.trim().getBytes()));
             return true;
         } catch (ParserConfigurationException | SAXException | IOException e) {
             return false;

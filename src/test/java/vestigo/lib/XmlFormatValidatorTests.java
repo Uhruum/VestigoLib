@@ -37,5 +37,4 @@ public class XmlFormatValidatorTests {
     void givenYamlStringWhenXmlFormatValidatorIsValidInvokedThenResultIsInValid(String value){
         assertFalse(_xmlFormatValidator.isValid(value));
     }
-
 }
