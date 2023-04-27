@@ -1,6 +1,5 @@
 package vestigo.lib.services.formatReaders.implementations;
 
-import lombok.extern.apachecommons.CommonsLog;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +16,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
 
 @Component
-@CommonsLog
 public class XmlFormatReaderImpl implements FormatReader {
 
     private final static Logger _logger = Logger.getLogger(XmlFormatReaderImpl.class);
