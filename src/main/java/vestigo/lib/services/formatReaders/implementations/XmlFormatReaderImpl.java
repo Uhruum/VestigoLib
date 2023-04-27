@@ -73,12 +73,15 @@ public class XmlFormatReaderImpl implements FormatReader {
                     mandatoryValues = parseChildNodes(node.getChildNodes(), mandatoryValues);
                 }
             }
+
+            if(node.getNodeType() == Node.CDATA_SECTION_NODE || node.getNodeType() == Node.TEXT_NODE)
+                mandatoryValues = _stringConcatenation.concatenate(node.getNodeValue(), mandatoryValues);
         }
         return mandatoryValues;
     }
 
     private String parseAttributes(@NotNull NamedNodeMap attributes, String mandatoryValues) {
-        for (int x = 0; x <= attributes.getLength(); x++) {
+        for (int x = 0; x < attributes.getLength(); x++) {
             mandatoryValues = _stringConcatenation.concatenate(attributes.item(x).getNodeValue(), mandatoryValues);
         }
         return mandatoryValues;

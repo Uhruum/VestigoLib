@@ -10,7 +10,7 @@ import vestigo.lib.services.implementations.ConsonantLetterCounterImpl;
 import vestigo.lib.services.implementations.VowelsLetterCounterImpl;
 import vestigo.lib.services.implementations.VowelsProviderImpl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class XmlFormatReaderTest {
 
@@ -28,5 +28,19 @@ public class XmlFormatReaderTest {
         String xml= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><employees><employee><id>1</id><firstName>Tom</firstName><lastName>Cruise</lastName><photo>https://jsonformatter.org/img/tom-cruise.jpg</photo></employee><employee><id>2</id><firstName>Maria</firstName><lastName>Sharapova</lastName><photo>https://jsonformatter.org/img/Maria-Sharapova.jpg</photo></employee><employee><id>3</id><firstName>Robert</firstName><lastName>Downey Jr.</lastName><photo>https://jsonformatter.org/img/Robert-Downey-Jr.jpg</photo></employee></employees>";
         LetterCounterReadDto format = _xmlFormatReader.readFormat(xml);
         assertNotNull(format);
+    }
+
+    @Test
+    void givenEmptyStringWhenXmlFormatReaderReadFormatInvokedThenThrewFormatReaderException() {
+        String xml= "";
+        assertThrows(FormatReaderException.class,() -> _xmlFormatReader.readFormat(xml));
+    }
+
+    @Test
+    void givenXmlStringStringWhenXmlFormatReaderReadFormatInvokedThenVowelCountConsonantCountIsCorrect() throws FormatReaderException{
+        String xml= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><root alt=\"test\"><item ref=\"test\">cosmos</item><item><![CDATA[characters with markup]]></item></root>";
+        LetterCounterReadDto format = _xmlFormatReader.readFormat(xml);
+        assertEquals(10, format.vowelCount);
+        assertEquals(57, format.consonantCount);
     }
 }
