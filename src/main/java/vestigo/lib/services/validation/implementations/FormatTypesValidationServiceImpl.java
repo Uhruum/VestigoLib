@@ -1,26 +1,26 @@
-package vestigo.lib.services.formatReaders.implementations;
+package vestigo.lib.services.validation.implementations;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import vestigo.lib.services.enums.FormatTypes;
 import vestigo.lib.services.validation.abstractions.FormatValidator;
-import vestigo.lib.services.formatReaders.abstractions.FormatTypesResolver;
+import vestigo.lib.services.validation.abstractions.FormatTypesValidationService;
 @Component
-public class FormatTypesResolverImpl implements FormatTypesResolver {
+public class FormatTypesValidationServiceImpl implements FormatTypesValidationService {
 
     private final FormatValidator _jsonFormatValidator;
     private final FormatValidator _xmlFormatValidator;
     private final FormatValidator _yamlFormatValidator;
 
-    public FormatTypesResolverImpl(@Qualifier("JsonFormatValidatorImpl") FormatValidator jsonFormatValidator,
-                                   @Qualifier("XmlFormatValidatorImpl")  FormatValidator xmlFormatValidator,
-                                   @Qualifier("YamlFormatValidatorImpl") FormatValidator yamlFormatValidator) {
+    public FormatTypesValidationServiceImpl(@Qualifier("JsonFormatValidatorImpl") FormatValidator jsonFormatValidator,
+                                            @Qualifier("XmlFormatValidatorImpl")  FormatValidator xmlFormatValidator,
+                                            @Qualifier("YamlFormatValidatorImpl") FormatValidator yamlFormatValidator) {
         _jsonFormatValidator = jsonFormatValidator;
         _xmlFormatValidator = xmlFormatValidator;
         _yamlFormatValidator = yamlFormatValidator;
     }
 
-    public FormatTypes resolveFormatType(String value) {
+    public FormatTypes validateAndResolveFormatType(String value) {
 
         if (_xmlFormatValidator.isValid(value))
             return FormatTypes.XML;

@@ -8,8 +8,8 @@ import vestigo.lib.services.dtos.LetterCounterReadDto;
 import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
 
-
 @Component
+@Qualifier("PlainTextFormatReaderImpl")
 public class PlainTextFormatReaderImpl implements FormatReader {
 
     private final static Logger _logger = Logger.getLogger(PlainTextFormatReaderImpl.class);

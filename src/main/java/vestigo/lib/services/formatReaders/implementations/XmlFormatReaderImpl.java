@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
 
 @Component
+@Qualifier("XmlFormatReaderImpl")
 public class XmlFormatReaderImpl implements FormatReader {
 
     private final static Logger _logger = Logger.getLogger(XmlFormatReaderImpl.class);
