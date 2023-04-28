@@ -1,7 +1,7 @@
-package vestigo.lib.services.implementations;
+package vestigo.lib.services.counters.implementations;
 
 import org.springframework.stereotype.Component;
-import vestigo.lib.services.apstractions.VowelsProvider;
+import vestigo.lib.services.counters.abstractions.VowelsProvider;
 
 import java.util.Arrays;
 import java.util.HashSet;

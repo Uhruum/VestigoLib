@@ -1,10 +1,10 @@
-package vestigo.lib.services.implementations;
+package vestigo.lib.services.counters.implementations;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import vestigo.lib.services.apstractions.AbstractLetterCounter;
-import vestigo.lib.services.apstractions.LetterCounter;
-import vestigo.lib.services.apstractions.VowelsProvider;
+import vestigo.lib.services.counters.abstractions.AbstractLetterCounter;
+import vestigo.lib.services.counters.abstractions.LetterCounter;
+import vestigo.lib.services.counters.abstractions.VowelsProvider;
 
 import java.util.Set;
 @Component

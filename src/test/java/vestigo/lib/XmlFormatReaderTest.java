@@ -1,14 +1,16 @@
 package vestigo.lib;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import vestigo.lib.services.dtos.LetterCounterReadDto;
 import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
 import vestigo.lib.services.formatReaders.implementations.StringConcatenationImpl;
 import vestigo.lib.services.formatReaders.implementations.XmlFormatReaderImpl;
-import vestigo.lib.services.implementations.ConsonantLetterCounterImpl;
-import vestigo.lib.services.implementations.VowelsLetterCounterImpl;
-import vestigo.lib.services.implementations.VowelsProviderImpl;
+import vestigo.lib.services.counters.implementations.ConsonantLetterCounterImpl;
+import vestigo.lib.services.counters.implementations.VowelsLetterCounterImpl;
+import vestigo.lib.services.counters.implementations.VowelsProviderImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,10 +32,19 @@ public class XmlFormatReaderTest {
         assertNotNull(format);
     }
 
-    @Test
-    void givenEmptyStringWhenXmlFormatReaderReadFormatInvokedThenThrewFormatReaderException() {
-        String xml= "";
-        assertThrows(FormatReaderException.class,() -> _xmlFormatReader.readFormat(xml));
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "Director:name: Spielberg\\r\\n  Movies:\\r\\n    - Movie:\\r\\n        title: E.T.\\r\\n        year: 1975\\r\\n    - Movie:\\r\\n        title: Jaws\\r\\n        year: 1982",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "  ",
+            ".",
+            ",",
+            " ",
+            "1258247851477",
+            "Director:\\r\\n  name: Spielberg\\r\\n  Movies:\\r\\n    - Movie:\\r\\n        title: E.T.\\r\\n        year: 1975\\r\\n    - Movie:\\r\\n        title: Jaws\\r\\n        year: 1982",
+            "{\"employees\":{\"employee\":[{\"id\":\"1\",\"firstName\":\"Tom\",\"lastName\":\"Cruise\",\"photo\":\"https://jsonformatter.org/img/tom-cruise.jpg\"},{\"id\":\"2\",\"firstName\":\"Maria\",\"lastName\":\"Sharapova\",\"photo\":\"https://jsonformatter.org/img/Maria-Sharapova.jpg\"},{\"id\":\"3\",\"firstName\":\"Robert\",\"lastName\":\"Downey Jr.\",\"photo\":\"https://jsonformatter.org/img/Robert-Downey-Jr.jpg\"}]}}"})
+    void givenInvalidXmlStringsWhenXmlFormatReaderReadFormatInvokedThenThrewFormatReaderException(String value) {
+        assertThrows(FormatReaderException.class,() -> _xmlFormatReader.readFormat(value));
     }
 
     @Test

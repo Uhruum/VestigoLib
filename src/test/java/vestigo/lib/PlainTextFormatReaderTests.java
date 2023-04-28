@@ -5,9 +5,9 @@ import vestigo.lib.services.dtos.LetterCounterReadDto;
 import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
 import vestigo.lib.services.formatReaders.implementations.PlainTextFormatReaderImpl;
-import vestigo.lib.services.implementations.ConsonantLetterCounterImpl;
-import vestigo.lib.services.implementations.VowelsLetterCounterImpl;
-import vestigo.lib.services.implementations.VowelsProviderImpl;
+import vestigo.lib.services.counters.implementations.ConsonantLetterCounterImpl;
+import vestigo.lib.services.counters.implementations.VowelsLetterCounterImpl;
+import vestigo.lib.services.counters.implementations.VowelsProviderImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

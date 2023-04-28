@@ -3,7 +3,7 @@ package vestigo.lib.services.formatReaders.implementations;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import vestigo.lib.services.apstractions.LetterCounter;
+import vestigo.lib.services.counters.abstractions.LetterCounter;
 import vestigo.lib.services.dtos.LetterCounterReadDto;
 import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;

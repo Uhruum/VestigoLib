@@ -3,9 +3,9 @@ package vestigo.lib;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import vestigo.lib.services.apstractions.LetterCounter;
-import vestigo.lib.services.implementations.VowelsLetterCounterImpl;
-import vestigo.lib.services.implementations.VowelsProviderImpl;
+import vestigo.lib.services.counters.abstractions.LetterCounter;
+import vestigo.lib.services.counters.implementations.VowelsLetterCounterImpl;
+import vestigo.lib.services.counters.implementations.VowelsProviderImpl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;

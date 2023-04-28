@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import vestigo.lib.services.apstractions.LetterCounter;
+import vestigo.lib.services.counters.abstractions.LetterCounter;
 import vestigo.lib.services.dtos.LetterCounterReadDto;
 import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 import vestigo.lib.services.formatReaders.abstractions.StringConcatenation;
