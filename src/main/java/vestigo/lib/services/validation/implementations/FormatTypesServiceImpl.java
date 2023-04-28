@@ -4,23 +4,27 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import vestigo.lib.services.enums.FormatTypes;
 import vestigo.lib.services.validation.abstractions.FormatValidator;
-import vestigo.lib.services.validation.abstractions.FormatTypesValidationService;
+import vestigo.lib.services.validation.abstractions.FormatTypesService;
+
+/**
+ * Default implementation of {@link FormatTypesService }
+ */
 @Component
-public class FormatTypesValidationServiceImpl implements FormatTypesValidationService {
+public class FormatTypesServiceImpl implements FormatTypesService {
 
     private final FormatValidator _jsonFormatValidator;
     private final FormatValidator _xmlFormatValidator;
     private final FormatValidator _yamlFormatValidator;
 
-    public FormatTypesValidationServiceImpl(@Qualifier("JsonFormatValidatorImpl") FormatValidator jsonFormatValidator,
-                                            @Qualifier("XmlFormatValidatorImpl")  FormatValidator xmlFormatValidator,
-                                            @Qualifier("YamlFormatValidatorImpl") FormatValidator yamlFormatValidator) {
+    public FormatTypesServiceImpl(@Qualifier("JsonFormatValidatorImpl") FormatValidator jsonFormatValidator,
+                                  @Qualifier("XmlFormatValidatorImpl")  FormatValidator xmlFormatValidator,
+                                  @Qualifier("YamlFormatValidatorImpl") FormatValidator yamlFormatValidator) {
         _jsonFormatValidator = jsonFormatValidator;
         _xmlFormatValidator = xmlFormatValidator;
         _yamlFormatValidator = yamlFormatValidator;
     }
 
-    public FormatTypes validateAndResolveFormatType(String value) {
+    public FormatTypes resolveFormatTypeByValidation(String value) {
 
         if (_xmlFormatValidator.isValid(value))
             return FormatTypes.XML;

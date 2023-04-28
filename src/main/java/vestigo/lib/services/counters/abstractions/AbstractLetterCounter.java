@@ -7,6 +7,9 @@ import java.util.Set;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.partitioningBy;
 
+/**
+ * Contains logic for counting characters
+ */
  public abstract class AbstractLetterCounter implements LetterCounter {
 
     private static final char CHAR_A = 'a';

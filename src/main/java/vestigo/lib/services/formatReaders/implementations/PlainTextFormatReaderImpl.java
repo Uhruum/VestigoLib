@@ -8,6 +8,14 @@ import vestigo.lib.services.dtos.LetterCounterReadDto;
 import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
 
+/**
+ * Implementation of {@link FormatReader} as PlainText format reader.
+ * Reads and parses string value as PlainText.
+ * Rules applied when parsing for counting are:
+ * <ul>
+ *   <li>whole text is considered for counting both vowels and consonants</li>
+ * </ul>
+ */
 @Component
 @Qualifier("PlainTextFormatReaderImpl")
 public class PlainTextFormatReaderImpl implements FormatReader {
@@ -21,7 +29,16 @@ public class PlainTextFormatReaderImpl implements FormatReader {
         _vowelsLetterCounter = vowelsLetterCounter;
         _consonantLetterCounter = consonantLetterCounter;
     }
-
+    /**
+     * Implementation of {@link FormatReader} as PlainText format reader.
+     * Reads and parses string value as PlainText.
+     * Rules applied when parsing for counting are:
+     * <ul>
+     *   <li>whole text is considered for counting both vowels and consonants</li>
+     * </ul>
+     * @param value Source for counting vowels and consonants
+     * @return {@link LetterCounterReadDto}
+     */
     public LetterCounterReadDto readFormat(String value) throws FormatReaderException {
         try {
             long consonantCount = _consonantLetterCounter.countLetters(value);

@@ -16,6 +16,15 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Implementation of {@link FormatReader} as YAML format reader.
+ * Reads and parses string value as YAML.
+ * Rules applied when parsing for counting are:
+ * <ul>
+ *    <li>for counting consonants whole text is taken</li>
+ *    <li>for counting vowels only values of properties are taken in consideration</li>
+ * </ul>
+ */
 @Component
 @Qualifier("YamlFormatReaderImpl")
 public class YamlFormatReaderImpl implements FormatReader {
@@ -32,7 +41,17 @@ public class YamlFormatReaderImpl implements FormatReader {
         _consonantLetterCounter = consonantLetterCounter;
         _stringConcatenation = stringConcatenation;
     }
-
+    /**
+     * Implementation of {@link FormatReader} as YAML format reader.
+     * Reads and parses string value as YAML.
+     * Rules applied when parsing for counting are:
+     * <ul>
+     *    <li>for counting consonants whole text is taken</li>
+     *    <li>for counting vowels only values of properties are taken in consideration</li>
+     * </ul>
+     * @param value Source for counting vowels and consonants
+     * @return {@link LetterCounterReadDto}
+     */
     public LetterCounterReadDto readFormat(String value) throws FormatReaderException {
         try {
             long consonantCount = _consonantLetterCounter.countLetters(value);

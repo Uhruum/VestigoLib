@@ -10,10 +10,17 @@ import vestigo.lib.services.validation.abstractions.FormatValidator;
 
 import java.io.IOException;
 
+/**
+ * Implementation of {@link FormatValidator} as JSON format validator.
+ * Validates input string with {@link Gson}.
+ */
 @Component
 @Qualifier("JsonFormatValidatorImpl")
 public class JsonFormatValidatorImpl implements FormatValidator {
-
+    /**
+     * Implementation of {@link FormatValidator} as JSON format validator.
+     * Validates input string with {@link Gson}.
+     */
     public boolean isValid(String value) {
         TypeAdapter<JsonElement> strictAdapter = new Gson().getAdapter(JsonElement.class);
         try {

@@ -10,6 +10,9 @@ import vestigo.lib.services.formatReaders.exceptions.FormatReaderProviderExcepti
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Default implementation of {@link FormatReaderProvider}
+ */
 @Component
 public class FormatReaderProviderImpl implements FormatReaderProvider {
 

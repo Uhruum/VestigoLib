@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Default implementation of {@link VowelsProvider}
+ */
 @Component
 public class VowelsProviderImpl implements VowelsProvider {
     public Set<Character> getVowels() {

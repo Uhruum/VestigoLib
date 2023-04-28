@@ -5,8 +5,14 @@ import org.springframework.stereotype.Component;
 import vestigo.lib.services.counters.abstractions.AbstractLetterCounter;
 import vestigo.lib.services.counters.abstractions.LetterCounter;
 import vestigo.lib.services.counters.abstractions.VowelsProvider;
+import vestigo.lib.services.formatReaders.abstractions.FormatReader;
 
 import java.util.Set;
+
+/**
+ * Implementation of {@link LetterCounter} as Consonant counter.
+ * Counts consonants in input string.
+ */
 @Component
 @Qualifier("ConsonantLetterCounterImpl")
 public class ConsonantLetterCounterImpl extends AbstractLetterCounter implements LetterCounter {

@@ -7,7 +7,10 @@ import vestigo.lib.services.counters.abstractions.LetterCounter;
 import vestigo.lib.services.counters.abstractions.VowelsProvider;
 
 import java.util.Set;
-
+/**
+ * Implementation of {@link LetterCounter} as Vowels counter.
+ * Count vowels in input string.
+ */
 @Component
 @Qualifier("VowelsLetterCounterImpl")
 public class VowelsLetterCounterImpl extends AbstractLetterCounter implements LetterCounter {

@@ -14,7 +14,15 @@ import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
-
+/**
+ * Implementation of {@link FormatReader} as XML format reader.
+ * Reads and parses string value as XML.
+ * Rules applied when parsing for counting are:
+ * <ul>
+ *    <li>for counting consonants whole text is taken</li>
+ *    <li>for counting vowels only values of attributes and elements are taken in consideration</li>
+ * </ul>
+ */
 @Component
 @Qualifier("XmlFormatReaderImpl")
 public class XmlFormatReaderImpl implements FormatReader {
@@ -30,7 +38,17 @@ public class XmlFormatReaderImpl implements FormatReader {
         _consonantLetterCounter = consonantLetterCounter;
         _stringConcatenation = stringConcatenation;
     }
-
+    /**
+     * Implementation of {@link FormatReader} as XML format reader.
+     * Reads and parses string value as XML.
+     * Rules applied when parsing for counting are:
+     * <ul>
+     *    <li>for counting consonants whole text is taken</li>
+     *    <li>for counting vowels only values of attributes and elements are taken in consideration</li>
+     * </ul>
+     * @param value Source for counting vowels and consonants
+     * @return {@link LetterCounterReadDto}
+     */
     public LetterCounterReadDto readFormat(String value) throws FormatReaderException {
         try {
             long consonantCount = _consonantLetterCounter.countLetters(value);

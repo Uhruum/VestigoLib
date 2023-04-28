@@ -17,7 +17,15 @@ import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
-
+/**
+ * Implementation of {@link FormatReader} as JSON format reader.
+ * Reads and parses string value as JSON.
+ * Rules applied when parsing for counting are:
+ * <ul>
+ *   <li>for counting consonants whole text is taken</li>
+ *   <li>for counting vowels only values of properties are taken in consideration</li>
+ * </ul>
+ */
 @Component
 @Qualifier("JsonFormatReaderImpl")
 public class JsonFormatReaderImpl implements FormatReader {
@@ -34,7 +42,16 @@ public class JsonFormatReaderImpl implements FormatReader {
         _consonantLetterCounter = consonantLetterCounter;
         _stringConcatenation = stringConcatenation;
     }
-
+/**
+ * Reads and parses string value as JSON.
+ * Rules applied when parsing for counting are:
+ * <ul>
+ *   <li>for counting consonants whole text is taken</li>
+ *   <li>for counting vowels only values of properties are taken in consideration</li>
+ * </ul>
+ * @param value Source for counting vowels and consonants
+ * @return {@link LetterCounterReadDto}
+ */
     public LetterCounterReadDto readFormat(String value) throws FormatReaderException {
         try {
             long consonantCount = _consonantLetterCounter.countLetters(value);
