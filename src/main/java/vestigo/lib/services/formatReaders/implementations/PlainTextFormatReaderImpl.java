@@ -1,6 +1,6 @@
 package vestigo.lib.services.formatReaders.implementations;
 
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import vestigo.lib.services.counters.abstractions.LetterCounter;
@@ -18,9 +18,9 @@ import vestigo.lib.services.formatReaders.exceptions.FormatReaderException;
  */
 @Component
 @Qualifier("PlainTextFormatReaderImpl")
+@Log4j
 public class PlainTextFormatReaderImpl implements FormatReader {
 
-    private final static Logger _logger = Logger.getLogger(PlainTextFormatReaderImpl.class);
     private final LetterCounter _vowelsLetterCounter;
     private final LetterCounter _consonantLetterCounter;
 
@@ -29,6 +29,7 @@ public class PlainTextFormatReaderImpl implements FormatReader {
         _vowelsLetterCounter = vowelsLetterCounter;
         _consonantLetterCounter = consonantLetterCounter;
     }
+
     /**
      * Implementation of {@link FormatReader} as PlainText format reader.
      * Reads and parses string value as PlainText.
@@ -50,7 +51,7 @@ public class PlainTextFormatReaderImpl implements FormatReader {
                     .build();
 
         } catch (Exception e) {
-            _logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             throw new FormatReaderException("Error occurred when PlainTextFormatReaderImpl was invoked, error parsing document!", e);
         }
     }

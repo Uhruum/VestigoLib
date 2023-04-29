@@ -1,6 +1,6 @@
 package vestigo.lib.services.formatReaders.implementations;
 
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -25,9 +25,9 @@ import java.io.ByteArrayInputStream;
  */
 @Component
 @Qualifier("XmlFormatReaderImpl")
+@Log4j
 public class XmlFormatReaderImpl implements FormatReader {
 
-    private final static Logger _logger = Logger.getLogger(XmlFormatReaderImpl.class);
     private final LetterCounter _vowelsLetterCounter;
     private final LetterCounter _consonantLetterCounter;
     private final StringConcatenation _stringConcatenation;
@@ -38,6 +38,7 @@ public class XmlFormatReaderImpl implements FormatReader {
         _consonantLetterCounter = consonantLetterCounter;
         _stringConcatenation = stringConcatenation;
     }
+
     /**
      * Implementation of {@link FormatReader} as XML format reader.
      * Reads and parses string value as XML.
@@ -73,7 +74,7 @@ public class XmlFormatReaderImpl implements FormatReader {
                     .build();
 
         } catch (Exception e) {
-            _logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             throw new FormatReaderException("Error occurred when XmlFormatReaderImpl was invoked, error parsing document!", e);
         }
     }

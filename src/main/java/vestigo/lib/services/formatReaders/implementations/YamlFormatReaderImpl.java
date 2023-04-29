@@ -1,6 +1,6 @@
 package vestigo.lib.services.formatReaders.implementations;
 
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
@@ -27,9 +27,9 @@ import java.util.Map;
  */
 @Component
 @Qualifier("YamlFormatReaderImpl")
+@Log4j
 public class YamlFormatReaderImpl implements FormatReader {
 
-    private final static Logger _logger = Logger.getLogger(YamlFormatReaderImpl.class);
     private final LetterCounter _vowelsLetterCounter;
     private final LetterCounter _consonantLetterCounter;
     private final StringConcatenation _stringConcatenation;
@@ -75,7 +75,7 @@ public class YamlFormatReaderImpl implements FormatReader {
                     .build();
 
         } catch (Exception e) {
-            _logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             throw new FormatReaderException("Error occurred when YamlFormatReaderImpl was invoked, error parsing document!", e);
         }
     }

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,11 +26,11 @@ import java.util.concurrent.atomic.AtomicReference;
  *   <li>for counting vowels only values of properties are taken in consideration</li>
  * </ul>
  */
+@Log4j
 @Component
 @Qualifier("JsonFormatReaderImpl")
 public class JsonFormatReaderImpl implements FormatReader {
 
-    private final static Logger _logger = Logger.getLogger(JsonFormatReaderImpl.class);
     private final LetterCounter _vowelsLetterCounter;
     private final LetterCounter _consonantLetterCounter;
     private final StringConcatenation _stringConcatenation;
@@ -70,7 +70,7 @@ public class JsonFormatReaderImpl implements FormatReader {
                     .build();
 
         } catch (Exception e) {
-            _logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             throw new FormatReaderException("Error occurred when JsonFormatReaderImpl was invoked, error parsing document!", e);
         }
     }
