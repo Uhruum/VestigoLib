@@ -39,3 +39,7 @@ add to *dependencies* section of **pom.xml** :
 </dependency>
 `
 Reload maven dependencies, and you should be able to call **LetterCounterService**.
+
+### Run
+You can specify VM option -Dtest.prop=\"quoted_value\" this will change default value of
+app prop test.prop and it will use its value for input string when counting letters.
